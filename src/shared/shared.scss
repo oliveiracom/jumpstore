@@ -1,0 +1,54 @@
+$sm: 320px;
+$tab: 768px;
+$desk: 1024px;
+$large: 1440px;
+
+$red-web: #CC0D1F;
+$gray:#DFDEDC;
+
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    max-width: $large;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#filters {
+    padding:8px;
+    border: 1px solid $gray;
+
+    h4 {
+        font-weight: 600;
+        color: $red-web;
+        font-size:20px;
+    }
+}
+
+@media (min-width: $sm) {
+    body { background: purple;}
+}
+
+@media only screen and (min-width : $sm ) and (max-width : $tab) {
+    body { background: green;}
+}
+
+@media only screen and (min-width : $tab ) and (max-width : $desk) {
+    body { background: cyan;}
+}
+
+@media only screen and (min-width : $large) {
+    body { background: pink;}
+}
+
