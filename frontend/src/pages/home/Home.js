@@ -26,6 +26,7 @@ export default class Home extends React.Component {
 
     async getCategories() {
         const response = await api.get('categories/list');
+        console.log(response)
         this.setState((state, props) => ({
           categories: this.state.categories(response.data)
         }));

@@ -4,6 +4,24 @@ import './Header.scss';
 
 
 export default class Header extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            searchQuery : ''
+        }
+    }
+
+    handleChange(event) {
+        this.setState({searchQuery: event.target.value});
+    }
+    handleSearch(event) {
+        event.preventDefault();
+        console.log('procurar por ', this.state.searchQuery);
+
+    }
+
+
     render() {
         return(
                 <header>
@@ -11,8 +29,8 @@ export default class Header extends React.Component {
                     <div className="container row">
                         <div id="brand"> <img src={logo}></img></div>
                         <div className="search">
-                            <form>
-                                <input type="text" name="search"></input>
+                            <form onSubmit={this.handleSearch}>
+                                <input type="text" name="search" value={this.state.searchQuery}></input>
                                 <input type="submit" value="BUSCAR"></input>
                             </form>
                         </div>
