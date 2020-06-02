@@ -5,12 +5,32 @@ import Breadcrumb from '../../shared/breadcrumb/Breadcrumb';
 import Filters from '../filters/Filters';
 import ProductCard from '../../shared/product-card/Product-Card';
 import Footer from '../../shared/footer/Footer';
+import api from '../../services/connect';
 import {ReactComponent as GridIcon} from '../../assets/grid-icon.svg';
 import {ReactComponent as ListIcon} from '../../assets/list-icon.svg';
 import {ReactComponent as ALeftIcon} from '../../assets/arrow-left.svg';
 import {ReactComponent as ARightIcon} from '../../assets/arrow-right.svg';
 
 export default class Home extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            categories: []
+        };
+    }
+
+    componentDidMount() {
+        this.getCategories();
+    }
+
+    async getCategories() {
+        const response = await api.get('categories/list');
+        this.setState((state, props) => ({
+          categories: this.state.categories(response.data)
+        }));
+    }
+
     render() {
         return(
             <>
