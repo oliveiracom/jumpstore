@@ -6,6 +6,14 @@ body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
     color: $dark-gray;
+
+    a {color: #fff;}
+
+    #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .container {
@@ -48,6 +56,9 @@ body {
             .grid_icon {
                 g{
                     fill: $dark-gray;
+                    &:hover {
+                        fill: $baby-green;
+                    }
                 }
                 
                 &.selected g {
@@ -147,6 +158,7 @@ body {
 #footer {
     height: 15vh;
     background: $red-web;
+    align-items: flex-end;
 }
 
 

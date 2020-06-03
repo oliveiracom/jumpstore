@@ -1,80 +1,24 @@
 import React from 'react';
-import Header from '../../shared/header/Header';
-import '../../shared/shared.scss';
-import Breadcrumb from '../../shared/breadcrumb/Breadcrumb';
-import Filters from '../filters/Filters';
-import ProductCard from '../../shared/product-card/Product-Card';
-import Footer from '../../shared/footer/Footer';
-import api from '../../services/connect';
-import {ReactComponent as GridIcon} from '../../assets/grid-icon.svg';
-import {ReactComponent as ListIcon} from '../../assets/list-icon.svg';
-import {ReactComponent as ALeftIcon} from '../../assets/arrow-left.svg';
-import {ReactComponent as ARightIcon} from '../../assets/arrow-right.svg';
 
-export default class Home extends React.Component {
-    constructor(props) {
-        super(props);
+import Header from '../shared/header/Header';
+import '../shared/shared.scss';
+import Breadcrumb from '../shared/breadcrumb/Breadcrumb';
+import Filters from '../pages/filters/Filters';
+import Footer from '../shared/footer/Footer';
+import {ReactComponent as GridIcon} from '../assets/grid-icon.svg';
+import {ReactComponent as ListIcon} from '../assets/list-icon.svg';
+
+export default class Pants extends React.Component {
+    constructor() {
+        super();
 
         this.state = {
-            categories: [],
             filters: [
                 {
-                    "color": "Cor"
+                    "gender": "Gênero"
                 }
             ],
             items: [
-              {
-                "id": 1,
-                "sku": "sku-1",
-                "path": "camiseta-preta",
-                "name": "Camiseta Preta",
-                "image": "media/shirt-1.jpg",
-                "price": 59.9,
-                "filter": [
-                  {
-                    "color": "Preta"
-                  }
-                ]
-              },
-              {
-                "id": 2,
-                "sku": "sku-2",
-                "path": "camiseta-laranja",
-                "name": "Camiseta Laranja",
-                "image": "media/shirt-2.jpg",
-                "price": 40.5,
-                "filter": [
-                    {
-                      "color": "Laranja"
-                    }
-                ]
-              },
-              {
-                "id": 3,
-                "sku": "sku-3",
-                "path": "camiseta-amarela",
-                "name": "Camiseta Amarela",
-                "image": "media/shirt-3.jpg",
-                "price": 61.49,
-                "filter": [
-                    {
-                      "color": "Amarela"
-                    }
-                ]
-              },
-              {
-                "id": 4,
-                "sku": "sku-4",
-                "path": "camiseta-rosa",
-                "name": "Camiseta Rosa",
-                "image": "media/shirt-4.jpg",
-                "price": 52.0,
-                "filter": [
-                    {
-                      "color": "Rosa"
-                    }
-                ]
-              },
               {
                 "id": 10,
                 "sku": "sku-10",
@@ -143,20 +87,9 @@ export default class Home extends React.Component {
                 ]
               }
             ]
-        };
-    }
+        }
 
-    componentDidMount() {
-        this.getCategories();
     }
-
-    async getCategories() {
-        const response = await api.get('categories/list');
-        this.setState((state, props) => ({
-          categories: this.state.categories(response.data)
-        }));
-    }
-
     render() {
         let list = [];
 
@@ -186,7 +119,7 @@ export default class Home extends React.Component {
                     <Filters/>
                 </div>
                 <div className="right">
-                    <h1>Roupas</h1>
+                    <h1>Calças</h1>
                     <div className="row view"> 
                         <div>
                             <GridIcon className='grid_icon selected'/>
@@ -204,19 +137,7 @@ export default class Home extends React.Component {
                     </div>
 
                     <div className="products">
-                        {list}
-                    </div>
-
-                    <div className="pagination">
-                        <ul>
-                            <li><ALeftIcon className='navigate_icon'/></li>
-                            <li>1</li>
-                            <li>2</li>
-                            <li className="current">3</li>
-                            <li>4</li>
-                            <li>5</li>
-                            <li><ARightIcon className='navigate_icon'/></li>
-                        </ul>                        
+                        {list} 
                     </div>
                 </div>
             </div>
