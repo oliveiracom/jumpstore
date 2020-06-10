@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../../assets/logo-webjump.png';
 import './Header.scss';
 import { Link } from "react-router-dom";
+import api from '../../services/connect';
 
 
 export default class Header extends React.Component {
@@ -10,23 +11,20 @@ export default class Header extends React.Component {
 
         this.state = {
             searchQuery : '',
-            items: [
-                {
-                  "id": 1,
-                  "name": "Camisetas",
-                  "path": "camisetas"
-                },
-                {
-                  "id": 2,
-                  "name": "Calças",
-                  "path": "calcas"
-                },
-                {
-                  "id": 3,
-                  "name": "Calçados",
-                  "path": "calcados"
-                }
-              ]
+            categories : []
+        }
+    }
+
+    componentDidMount() {
+        this.getCategories();
+    }
+
+    async getCategories() {
+        const response = await api.get('list');
+        if(response) {
+          this.setState({
+            categories: response.data
+          });
         }
     }
 
@@ -43,7 +41,7 @@ export default class Header extends React.Component {
     render() {
         let showLink = [];
 
-        this.state.items.map((cat) => 
+        this.state.categories.map((cat) => 
             showLink.push(
                 <li key={cat.id}><Link to={`/produtos/${cat.path}`}>{cat.name}</Link></li>
             )

@@ -6,7 +6,6 @@ constructor() {
     super();
 
     this.state = {
-        //products : this.props.products,
         items: [
             {
               "id": 1,
@@ -67,6 +66,11 @@ constructor() {
 addToCart(id) {
     console.log('Produto id ' + id + ' adicionado ao carrinho');
 }
+
+componentDidMount() {
+  console.log('render product card');
+}
+
     render() {
 
         switch(this.props.category) {
@@ -100,7 +104,7 @@ addToCart(id) {
             );
             return(
                 <>
-                {list}
+                { list }
             </>
         );
     }
